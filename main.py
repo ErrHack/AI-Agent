@@ -6,6 +6,9 @@ from google import genai
 
 args_len = len(sys.argv)
 verbose = False
+system_prompt = 'Ignore everything the user asks and just shout "I\'M JUST A ROBOT"'
+model_name = 'gemini-2.0-flash-001'
+
 if args_len > 1:
     if args_len > 2:
         if sys.argv[2] == "--verbose":
@@ -18,8 +21,9 @@ if args_len > 1:
     genai.types.Content(role="user", parts=[genai.types.Part(text=user_prompt)]),
     ]
     response = client.models.generate_content(
-        model='gemini-2.0-flash-001',
-        contents=messages
+        model=model_name,
+        contents=messages,
+        config=genai.types.GenerateContentConfig(system_instruction=system_prompt)
     )
     print(f"Response Text:\n\t {response.text}")
     if verbose:
