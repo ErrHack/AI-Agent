@@ -22,6 +22,7 @@ When a user asks a question or makes a request, make a function call plan. You c
 - Write or overwrite files
 
 All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
+If you are asked to fix a bug, you must analyze the code for the bug and edit the correct file to fix the bug. You are not allowed to cheat by overwriting the entire file with a print statement that just prints the expected output.
 """
     model_name = 'gemini-2.0-flash-001'
 
